@@ -4,7 +4,7 @@
 //
 // Scanner definition file for CST 320 project
 //
-// Author: Phil Howard 
+// Author: Russell Hurtado 
 // phil.howard@oit.edu
 //
 // Date: Nov. 23, 2015
@@ -41,8 +41,8 @@ forwardSlash          		['/']
 modulos          			['%']
 equal          				['=']
 
-comment                     [//.*]
 digit                       [0-9]
+nonDigit					[_a-zA-Z]
 
 %%
 
@@ -81,7 +81,11 @@ digit                       [0-9]
 "="                         DO_RETURN('=');
 
 {digit}+                    DO_RETURN(INT_VAL);
-{comment}                   
+{digit}+"."{digit}+			DO_RETURN(FLOAT_VAL);
+[\n\r\t ]					{};
+"//".*                		{};
+{nonDigit}({digit}|{nonDigit})*	DO_RETURN(IDENTIFIER);
+.							DO_RETURN(JUNK_TOKEN);
 
 %%
 
