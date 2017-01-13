@@ -5,9 +5,9 @@
 // Scanner definition file for CST 320 project
 //
 // Author: Russell Hurtado 
-// phil.howard@oit.edu
+// russell.hurtado@oit.edu
 //
-// Date: Nov. 23, 2015
+// Date: Jan. 12, 2017
 //
 
 #include "tokens.h"
