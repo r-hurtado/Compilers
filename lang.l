@@ -25,22 +25,7 @@ int Return(int val);
 
 
     /* definitions go here. period is an example. */
-leftParenthesis				['(']
-rightParenthesis         	[')']
-leftCurly          			['{']
-rightCurly          		['}']
-leftBracket          		['[']
-rightBracket          		[']']
-semiColon          			[';']
-comma         				[',']
-period          			['.']
-plus          				['+']
-minus          				['-']
-asterisk          			['*']
-forwardSlash          		['/']
-modulos          			['%']
-equal          				['=']
-
+	
 digit                       [0-9]
 nonDigit					[_a-zA-Z]
 
