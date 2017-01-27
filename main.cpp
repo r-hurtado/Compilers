@@ -4,23 +4,23 @@
 // Main routine for lang compiler.
 // This version only runs the lexer
 //
-// Author: Phil Howard 
-// phil.howard@oit.edu
+// Author: Russ Hurtado 
+// russell.hurtado@oit.edu
 //
-// Date: Dec. 15, 2016
+// Date: Jan. 26, 2017
 //
 #include <stdio.h>
 #include <stdlib.h>
 #include <iostream>
 #include <fstream>
 #include "cSymbol.h"
-#include "cSymbolTable.h"
+#include "symtab.h"
 #include "lex.h"
 #include "tokens.h"
 
 // Global symbol table definition
 // if we had a cSymbolTable.cpp, this definition could go there
-cSymbolTable g_SymbolTable;
+SymTab g_SymbolTable;
 
 // If we had a cSymbol.cpp, this definition would go there
 long long cSymbol::nextId = 0;
