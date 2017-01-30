@@ -10,7 +10,7 @@ void SymTab::DecreaseScope()
 	
 }
 
-void SymTab::Insert(cSymbol* s)
+cSymbol* SymTab::Insert(string s)
 {
 	m_table.insert({s.GetName(), s});
 }

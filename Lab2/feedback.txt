@@ -1,0 +1,17 @@
+“Lab2 Feedback”
+
+85
+
+-7 Your code infinite loops if there is no END in the file. It also infinite loops if there is no ; after a statement.
+
+-4 There are some circumstance where your error recovery does not seem to work.
+
+You left a bunch of commented out code in your file. A better solution is to commit the previous version to git, then delete the commented out code. You can recover it from git if you want to go back to it.
+
+-4 You used the indented code style instead of the flat style I suggested. Some of your 'else's were missing and as a result, some errors were not reported.
+
+
+
+
+
+

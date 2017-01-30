@@ -11,6 +11,7 @@
 // Date: Dec 30, 2015
 //
 
+#define END 2102 
 #define ARRAY 1000
 #define IF 1001
 #define ELSE 1002
