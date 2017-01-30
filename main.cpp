@@ -21,6 +21,7 @@
 // Global symbol table definition
 // if we had a cSymbolTable.cpp, this definition could go there
 SymTab g_SymbolTable;
+yylval_t yylval;
 
 // If we had a cSymbol.cpp, this definition would go there
 long long cSymbol::nextId = 0;

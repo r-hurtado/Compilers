@@ -7,6 +7,7 @@
 //
 #include <unordered_map>
 #include "cSymbol.h"
+#include "lex.h"
 
 using std::unordered_map;
 
@@ -14,16 +15,16 @@ class SymTab
 {
     public:
         // Construct a symbol given its name
-        SymTab()
-        {
-            m_table;
-        }
+        //SymTab(){ }
 
         void IncreaseScope();
 		void DecreaseScope();
-		void Insert(cSymbol*);
+		cSymbol* Insert(string);
 		bool Lookup(string);
+		virtual string ToString();
 
     protected:
         unordered_map<string, cSymbol*> m_table;
 };
+		
+extern SymTab g_SymbolTable;
