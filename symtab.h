@@ -18,12 +18,13 @@ class SymTab
 {
     public:
         // Construct a symbol given its name
-        SymTab(){ m_maps(m_table); }
+        SymTab(){  }
 
         void IncreaseScope();
 		void DecreaseScope();
 		cSymbol* Insert(string);
 		bool Lookup(string);
+		bool FullLookup(string);
 
     protected:
 		list<unordered_map<string, cSymbol*>> m_maps;

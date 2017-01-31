@@ -2,14 +2,15 @@
 
 void SymTab::IncreaseScope()
 {
+	unordered_map<string, cSymbol*> temp;
 	m_maps.push_back(m_table);
-	
+	m_table = temp;
 }
 
 void SymTab::DecreaseScope()
 {
-	map_level--;
-	//set m_table
+	m_table = m_maps.back();
+	m_maps.pop_back();
 }
 
 cSymbol* SymTab::Insert(string s)
@@ -42,7 +43,7 @@ bool SymTab::Lookup(string s)
 //returns true if s is found.
 bool SymTab::FullLookup(string s)
 {
-	list<unordered_map<string, cSymbol*>>::iterator stack_it;
+	list<unordered_map<string, cSymbol*>>::reverse_iterator stack_it;
 	stack_it = m_maps.rbegin();
 	
 	unordered_map<string, cSymbol*>::iterator map_it;
@@ -52,12 +53,12 @@ bool SymTab::FullLookup(string s)
 	
 	while(!done)
 	{
-		map_it = stack_it.find(s);
+		map_it = stack_it->find(s);
 		
-		if(map_it != stack_it.end())
+		if(map_it != stack_it->end())
 		{
-			done == true;
-			found == true;
+			done = true;
+			found = true;
 		}
 		else if (stack_it != m_maps.rend())
 		{
