@@ -74,9 +74,15 @@ identifier					{nonDigit}({digit}|{nonDigit})*
                                 g_SymbolTable.IncreaseScope();
                                 return yytext[0];
                             }
+							
 "}"                         {
                                 g_SymbolTable.DecreaseScope();
                                 return yytext[0];
+                            }
+
+{identifier}                {
+                                yylval.symbol = g_SymbolTable.Insert(yytext);
+                                return IDENTIFIER;
                             }
 
 {digit}+                    DO_RETURN(INT_VAL);
@@ -84,11 +90,6 @@ identifier					{nonDigit}({digit}|{nonDigit})*
 [\n\r\t ]					{};
 "//".*                		{};
 .							DO_RETURN(JUNK_TOKEN);
-
-{identifier}                {
-                                yylval.symbol = g_SymbolTable.Insert(yytext);
-                                return IDENTIFIER;
-                            }
 
 
 %%

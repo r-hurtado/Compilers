@@ -12,6 +12,7 @@
 COPTS=-Wall -g -c -O0 -std=c++11
 OBJS=main.o \
 	 langlex.o \
+	 symtab.o
 
 all: lang
 
@@ -29,15 +30,18 @@ clean:
 .cpp.o:
 	g++ $(COPTS) $? -o $@
 
-main.o: main.cpp langlex.c 
+main.o: main.cpp langlex.c symtab.cpp
 	g++ $(COPTS) main.cpp -o main.o
+	
+symtab.o: symtab.cpp 
+	g++ $(COPTS) symtab.cpp -o symtab.o
 
-langlex.c: lang.l
-	flex -o langlex.c lang.l
+langlex.c: lang.l 
+	flex -o langlex.c lang.l 
 
 langlex.o: langlex.c
 	g++ $(COPTS) -Wno-sign-compare $? -o $@
 
-lang: $(OBJS)
+lang: $(OBJS) 
 	g++ $(OBJS) -o lang
 

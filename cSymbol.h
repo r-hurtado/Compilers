@@ -21,7 +21,7 @@ class cSymbol
 
         // Return a string representation of a symbol
         // Return value is an XML node
-        string ToString()
+		virtual string ToString()
         {
             string result("<sym id=\"");
             result += std::to_string(m_id);
