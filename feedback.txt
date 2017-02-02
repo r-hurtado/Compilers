@@ -6,3 +6,13 @@ You had a bunch of definitions that you never used. You should remove them.
 
 Otherwise, well done.
 
+*******************************************
+Lab2 Feedback  (Accidentally overwrote this file, this is the best I remember it to be)
+
+92
+
+-3 Your look up function should return a pointer to the object, not a bool.
+
+-3 Instead of setting a local variable, you should be accessing the back of the list.
+
+-2 Inconsistant indentation.
