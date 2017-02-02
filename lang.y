@@ -4,10 +4,10 @@
 //
 // Parser definition file. bison uses this file to generate the parser.
 //
-// Author: Phil Howard 
-// phil.howard@oit.edu
+// Author: Russ Hurtado 
+// russell.hurtado@oit.edu
 //
-// Date: Dec. 18, 2016
+// Date: Feb. 1, 2017
 //
 #include <iostream>
 #include "lex.h"
@@ -135,7 +135,7 @@ paramsspec: paramsspec',' paramspec
 
 paramspec:  var_decl            {}
 
-stmts:      stmts stmt          {}
+stmts:      stmts stmt          { $1->Insert($2); }
         |   stmt                { $$ = new cStmtsNode($1); }
 
 stmt:       IF '(' expr ')' stmts ENDIF ';'
