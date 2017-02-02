@@ -19,4 +19,13 @@ class cExprNode : public cStmtNode
 {
     public:
         cExprNode() : cStmtNode() {}
+
+        // Add a statement to the list
+        void Insert(cAstNode *ast)
+        {
+            AddChild(ast);
+        }
+
+        virtual string NodeType() { return string("expr"); }
+        virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 };

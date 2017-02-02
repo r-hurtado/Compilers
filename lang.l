@@ -51,7 +51,7 @@ whitespace      '[\t\n\r ]'
 
     /* Note: The following three lines will need to be changed */
 "int"                       DO_RETURN(TYPE_ID);
-"float"                     DO_RETURN(TYPE_ID);
+"float"                     DO_RETURN(FLOAT_VAL);
 "char"                      DO_RETURN(TYPE_ID);
 
 "struct"                    DO_RETURN(STRUCT);
@@ -75,6 +75,7 @@ whitespace      '[\t\n\r ]'
 [0-9]+\.[0-9]+              {
                               // NOTE: this code will have to be udpated as
                               // part of this lab.
+							  yylval.float_val = atof(yytext); 
                               DO_RETURN(FLOAT_VAL);
                             }
 "=="                        DO_RETURN(EQUALS);

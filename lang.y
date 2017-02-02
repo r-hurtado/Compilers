@@ -172,18 +172,24 @@ param:      expr                {}
 expr:       expr EQUALS addit   {}
         |   addit               { $$ = $1; }
 
-addit:      addit '+' term      {}
+addit:      addit '+' term      { $$ = new cExprNode(); 
+								  $$->Insert($1);
+								  $$->Insert(new cOpNode('+'));
+								  $$->Insert($3); }
         |   addit '-' term      {}
         |   term                { $$ = $1; }
 
-term:       term '*' fact       {}
+term:       term '*' fact       { $$ = new cExprNode(); 
+								  $$->Insert($1);
+								  $$->Insert(new cOpNode('*'));
+								  $$->Insert($3); }
         |   term '/' fact       {}
         |   term '%' fact       {}
         |   fact                { $$ = $1; }
 
 fact:        '(' expr ')'       {}
         |   INT_VAL             { $$ = new cIntExprNode($1); }
-        |   FLOAT_VAL           {}
+        |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
         |   varref              {}
 
 %%
