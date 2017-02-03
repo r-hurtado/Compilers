@@ -92,6 +92,16 @@ class cSymbolTable
         {
             return FindInTable(m_SymbolTable.front(), name);
         }
+		
+		void DefaultInit()
+		{
+			pair<string, cSymbol*> new_val_c("char", new cSymbol("char", true));
+			pair<string, cSymbol*> new_val_i("int", new cSymbol("int", true));
+			pair<string, cSymbol*> new_val_f("float", new cSymbol("float", true));
+			m_SymbolTable.front()->insert(new_val_c);
+			m_SymbolTable.front()->insert(new_val_i);
+			m_SymbolTable.front()->insert(new_val_f);
+		}
 
     protected:
         // list of symbol tables. The list contains the different levels

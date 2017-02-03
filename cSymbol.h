@@ -21,14 +21,17 @@ class cSymbol : public cAstNode
 {
     public:
         // param is name of symbol
-        cSymbol(string name) : cAstNode()
+        cSymbol(string name, bool type = false) : cAstNode()
         {
             m_id = ++nextId;        // get next available ID
             m_name = name;
+			m_type = type;
         }
 
         // return name of symbol
         string GetName() { return m_name; }
+		
+		bool isType() { return true; }
 
         virtual string AttributesToString()
         {
@@ -43,4 +46,5 @@ class cSymbol : public cAstNode
         static long long nextId;        // Next avail symbol ID
         long long m_id;                 // Unique ID for this symbol
         string m_name;                  // name of symbol
+		bool m_type;					// Whether symbol is a type
 };

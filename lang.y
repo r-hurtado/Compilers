@@ -30,6 +30,7 @@
     cSymbol*        symbol;
     cSymbolTable::symbolTable_t*  sym_table;
     cDeclNode*      decl_node;
+	cVarDeclNode*	var_decl_node;
     cDeclsNode*     decls_node;
     }
 
@@ -63,7 +64,7 @@
 %type <sym_table> close
 %type <decls_node> decls
 %type <decl_node> decl
-%type <decl_node> var_decl
+%type <var_decl_node> var_decl
 %type <decl_node> struct_decl
 %type <decl_node> array_decl
 %type <ast_node> func_decl
@@ -81,7 +82,7 @@
 %type <expr_node> addit
 %type <expr_node> term
 %type <expr_node> fact
-%type <ast_node> varref
+%type <symbol> varref
 %type <ast_node> varpart
 
 %%
@@ -104,15 +105,15 @@ close:  '}'                     { g_SymbolTable.DecreaseScope();
                                   $$ = nullptr; // probably want to change this
                                 }
 
-decls:      decls decl          {}
-        |   decl                {}
+decls:      decls decl          { $$=$1; $$->Insert($2); }
+        |   decl                { $$ = new cDeclsNode($1); }
 decl:       var_decl ';'        { $$ = $1; }
         |   struct_decl ';'     {}
         |   array_decl ';'      {}
         |   func_decl           {}
         |   error ';'           {}
 
-var_decl:   TYPE_ID IDENTIFIER  {}
+var_decl:   TYPE_ID IDENTIFIER  { $$ = new cVarDeclNode($1, $2); }
 struct_decl:  STRUCT open decls close IDENTIFIER    
                                 {}
 array_decl: ARRAY TYPE_ID '[' INT_VAL ']' IDENTIFIER
@@ -135,7 +136,7 @@ paramsspec: paramsspec',' paramspec
 
 paramspec:  var_decl            {}
 
-stmts:      stmts stmt          { $1->Insert($2); }
+stmts:      stmts stmt          { $$=$1; $$->Insert($2); }
         |   stmt                { $$ = new cStmtsNode($1); }
 
 stmt:       IF '(' expr ')' stmts ENDIF ';'
@@ -190,7 +191,7 @@ term:       term '*' fact       { $$ = new cExprNode();
 fact:        '(' expr ')'       {}
         |   INT_VAL             { $$ = new cIntExprNode($1); }
         |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
-        |   varref              {}
+        |   varref              { $$ = new cVarExprNode($1); }
 
 %%
 
