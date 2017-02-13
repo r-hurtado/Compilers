@@ -31,6 +31,7 @@
     cSymbolTable::symbolTable_t*  sym_table;
     cDeclNode*      decl_node;
 	cVarDeclNode*	var_decl_node;
+	cVarExprNode*	var_expr_node;
     cDeclsNode*     decls_node;
     }
 
@@ -75,7 +76,7 @@
 %type <ast_node> paramspec
 %type <stmts_node> stmts
 %type <stmt_node> stmt
-%type <ast_node> lval
+%type <var_expr_node> lval
 %type <ast_node> params
 %type <ast_node> param
 %type <expr_node> expr
@@ -140,18 +141,18 @@ stmts:      stmts stmt          { $$=$1; $$->Insert($2); }
         |   stmt                { $$ = new cStmtsNode($1); }
 
 stmt:       IF '(' expr ')' stmts ENDIF ';'
-                                {}
+                                { $$ = new cIfNode($3, $5); }
         |   IF '(' expr ')' stmts ELSE stmts ENDIF ';'
-                                {}
+                                { $$ = new cIfNode($3, $5, $7); }
         |   WHILE '(' expr ')' stmt 
-                                {}
+                                { $$ = new cWhileNode($3, $5); }
         |   PRINT '(' expr ')' ';'
                                 { $$ = new cPrintNode($3); }
-        |   lval '=' expr ';'   {}
+        |   lval '=' expr ';'   { $$ = new cAssignNode($1, $3); }
         |   lval '=' func_call ';'   {}
         |   func_call ';'       {}
-        |   block               {}
-        |   RETURN expr ';'     {}
+        |   block               { $$=$1; }
+        |   RETURN expr ';'     { $$ = new cReturnNode($2); }
         |   error ';'           {}
 
 func_call:  IDENTIFIER '(' params ')' {}
@@ -159,11 +160,11 @@ func_call:  IDENTIFIER '(' params ')' {}
 
 varref:   varref '.' varpart    {}
         | varref '[' expr ']'   {}
-        | varpart               {}
+        | varpart               {  }
 
 varpart:  IDENTIFIER            { $$ = $1; }
 
-lval:     varref                { $$ = $1; }
+lval:     varref                { $$ = new cVarExprNode($1); }
 
 params:     params',' param     {}
         |   param               {}
@@ -177,18 +178,27 @@ addit:      addit '+' term      { $$ = new cExprNode();
 								  $$->Insert($1);
 								  $$->Insert(new cOpNode('+'));
 								  $$->Insert($3); }
-        |   addit '-' term      {}
+        |   addit '-' term      { $$ = new cExprNode(); 
+								  $$->Insert($1);
+								  $$->Insert(new cOpNode('-'));
+								  $$->Insert($3);}
         |   term                { $$ = $1; }
 
 term:       term '*' fact       { $$ = new cExprNode(); 
 								  $$->Insert($1);
 								  $$->Insert(new cOpNode('*'));
 								  $$->Insert($3); }
-        |   term '/' fact       {}
-        |   term '%' fact       {}
+        |   term '/' fact       { $$ = new cExprNode(); 
+								  $$->Insert($1);
+								  $$->Insert(new cOpNode('/'));
+								  $$->Insert($3);}
+        |   term '%' fact       { $$ = new cExprNode(); 
+								  $$->Insert($1);
+								  $$->Insert(new cOpNode('%'));
+								  $$->Insert($3);}
         |   fact                { $$ = $1; }
 
-fact:        '(' expr ')'       {}
+fact:        '(' expr ')'       { $$=$2; }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
         |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
         |   varref              { $$ = new cVarExprNode($1); }
