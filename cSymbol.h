@@ -31,7 +31,7 @@ class cSymbol : public cAstNode
         // return name of symbol
         string GetName() { return m_name; }
 		
-		bool isType() { return true; }
+		bool isType() { return m_type; }
 
         virtual string AttributesToString()
         {

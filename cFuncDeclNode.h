@@ -1,6 +1,6 @@
 #pragma once
 //**************************************
-// cVarDeclNode
+// cFuncDeclNode
 //
 // Defines base class for all declarations.
 // Future labs will add features to this class.
@@ -12,24 +12,40 @@
 //
 
 #include "cDeclNode.h"
+#include "cDeclsNode.h"
+#include "cStmtsNode.h"
 #include "cSymbolTable.h"
+#include "cParamsNode.h"
 
-class cVarDeclNode : public cDeclNode
+class cFuncDeclNode : public cDeclNode
 {
 public:
-	cVarDeclNode(cSymbol *type, string name) : cDeclNode()
+	cFuncDeclNode(string name, cSymbol* type) : cDeclNode()
 	{
-		AddChild(type);
-		
 		cSymbol* temp = g_SymbolTable.FindLocal(name);
 		if (temp == nullptr)
 		{
 			temp = new cSymbol(name); 
 			g_SymbolTable.Insert(temp);
 		}
+		
+		AddChild(type);
 		AddChild(temp);
 	}
+	
+	// Add a decl to the list
+	void Insert(cParamsNode *decl)
+	{
+		AddChild(decl);
+	}
+	
+	// Add a decl to the list
+	void Insert(cStmtsNode *stmts, cDeclsNode *decls = nullptr)
+	{
+		AddChild(decls);
+		AddChild(stmts);
+	}
 
-	virtual string NodeType() { return string("var_decl"); }
+	virtual string NodeType() { return string("func"); }
 	virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 };

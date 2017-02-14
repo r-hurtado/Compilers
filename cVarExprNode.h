@@ -20,6 +20,18 @@ class cVarExprNode : public cExprNode
         {
 			AddChild(name);
         }
+		
+		// Add a statement to the list
+        void Insert( cAstNode *sym)
+        {
+            AddChild(sym);
+        }
+		
+		// Add a statement to the list
+        void Insert(cExprNode *expr)
+        {
+            AddChild(expr);
+        }
 
         virtual string NodeType() { return string("varref"); }
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }

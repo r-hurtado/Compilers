@@ -69,13 +69,12 @@ whitespace      '[\t\n\r ]'
 [a-zA-Z_][a-zA-Z0-9_]*      { 
                               // NOTE: this code will have to be changed
                               // as part of this lab
-                              yylval.symbol = g_SymbolTable.FindLocal(yytext);
-                              if (yylval.symbol == nullptr)
-                              {
-                                  yylval.symbol = new cSymbol(yytext); 
-                                  g_SymbolTable.Insert(yylval.symbol);
-                              }
-                              DO_RETURN(IDENTIFIER);
+							  
+							  yylval.symbol = g_SymbolTable.Find(yytext);
+                              if(yylval.symbol != nullptr && yylval.symbol->isType())
+								  { DO_RETURN(TYPE_ID); }
+							  else
+							      { yylval.string_val = strdup(yytext); DO_RETURN(IDENTIFIER); }
                             }
 [0-9]+                      {
                                 yylval.int_val = atoi(yytext); 

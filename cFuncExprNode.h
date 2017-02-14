@@ -1,6 +1,6 @@
 #pragma once
 //**************************************
-// cVarDeclNode
+// cFuncExprNode
 //
 // Defines base class for all declarations.
 // Future labs will add features to this class.
@@ -11,25 +11,25 @@
 // Date: Jan. 18, 2015
 //
 
-#include "cDeclNode.h"
-#include "cSymbolTable.h"
+#include "cExprNode.h"
+#include "cParamListNode.h"
 
-class cVarDeclNode : public cDeclNode
+class cFuncExprNode : public cExprNode
 {
 public:
-	cVarDeclNode(cSymbol *type, string name) : cDeclNode()
+	cFuncExprNode(string name, cParamListNode* params = nullptr) : cExprNode()
 	{
-		AddChild(type);
-		
 		cSymbol* temp = g_SymbolTable.FindLocal(name);
 		if (temp == nullptr)
 		{
-			temp = new cSymbol(name); 
+			temp = new cSymbol(name, true); 
 			g_SymbolTable.Insert(temp);
 		}
+		
 		AddChild(temp);
+		AddChild(params);
 	}
 
-	virtual string NodeType() { return string("var_decl"); }
+	virtual string NodeType() { return string("funcCall"); }
 	virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 };

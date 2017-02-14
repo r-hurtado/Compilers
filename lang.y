@@ -33,6 +33,11 @@
 	cVarDeclNode*	var_decl_node;
 	cVarExprNode*	var_expr_node;
     cDeclsNode*     decls_node;
+	char*			string_val;
+	cParamsNode*	params_node;
+	cFuncDeclNode*	func_decl_node;
+	cParamListNode*	param_list_node;
+	cFuncExprNode*	func_expr_node;
     }
 
 %{
@@ -43,7 +48,7 @@
 
 %start  program
 
-%token <symbol>    IDENTIFIER
+%token <string_val>		IDENTIFIER
 %token <symbol>    TYPE_ID
 %token <int_val>   CHAR_VAL
 %token <int_val>   INT_VAL
@@ -68,23 +73,23 @@
 %type <var_decl_node> var_decl
 %type <decl_node> struct_decl
 %type <decl_node> array_decl
-%type <ast_node> func_decl
-%type <ast_node> func_header
-%type <symbol> func_prefix
-%type <ast_node> func_call
-%type <ast_node> paramsspec
-%type <ast_node> paramspec
+%type <func_decl_node> func_decl
+%type <func_decl_node> func_header
+%type <func_decl_node> func_prefix
+%type <func_expr_node> func_call
+%type <params_node> paramsspec
+%type <decl_node> paramspec
 %type <stmts_node> stmts
 %type <stmt_node> stmt
 %type <var_expr_node> lval
-%type <ast_node> params
-%type <ast_node> param
+%type <param_list_node> params
+%type <expr_node> param
 %type <expr_node> expr
 %type <expr_node> addit
 %type <expr_node> term
 %type <expr_node> fact
-%type <symbol> varref
-%type <ast_node> varpart
+%type <var_expr_node> varref
+%type <symbol> varpart
 
 %%
 
@@ -109,33 +114,33 @@ close:  '}'                     { g_SymbolTable.DecreaseScope();
 decls:      decls decl          { $$=$1; $$->Insert($2); }
         |   decl                { $$ = new cDeclsNode($1); }
 decl:       var_decl ';'        { $$ = $1; }
-        |   struct_decl ';'     {}
-        |   array_decl ';'      {}
-        |   func_decl           {}
+        |   struct_decl ';'     { $$ = $1; }
+        |   array_decl ';'      { $$ = $1; }
+        |   func_decl           { $$=$1; g_SymbolTable.DecreaseScope();}
         |   error ';'           {}
 
 var_decl:   TYPE_ID IDENTIFIER  { $$ = new cVarDeclNode($1, $2); }
 struct_decl:  STRUCT open decls close IDENTIFIER    
-                                {}
+                                { $$ = new cStructDeclNode($5, $3); }
 array_decl: ARRAY TYPE_ID '[' INT_VAL ']' IDENTIFIER
-                                {}
+                                { $$ = new cArrayDeclNode($6, $2, $4); }
 
 func_decl:  func_header ';'
-                                {}
+                                {$$ = $1;}
         |   func_header  '{' decls stmts '}'
-                                {}
+                                { $$ = $1; $$->Insert($4, $3); }
         |   func_header  '{' stmts '}'
-                                {}
+                                { $$ = $1; $$->Insert($3); }
 func_header: func_prefix paramsspec ')'
-                                {}
-        |    func_prefix ')'    {}
+                                { $$ = $1; $$->Insert($2); }
+        |    func_prefix ')'    { $$ = $1; }
 func_prefix: TYPE_ID IDENTIFIER '('
-                                {}
+                                { $$ = new cFuncDeclNode($2, $1); g_SymbolTable.IncreaseScope(); }
 paramsspec: paramsspec',' paramspec 
-                                {}
-        |   paramspec           {}
+                                { $$ = $1; $$->Insert($3); }
+        |   paramspec           { $$ = new cParamsNode($1); }
 
-paramspec:  var_decl            {}
+paramspec:  var_decl            {$$=$1;}
 
 stmts:      stmts stmt          { $$=$1; $$->Insert($2); }
         |   stmt                { $$ = new cStmtsNode($1); }
@@ -149,29 +154,32 @@ stmt:       IF '(' expr ')' stmts ENDIF ';'
         |   PRINT '(' expr ')' ';'
                                 { $$ = new cPrintNode($3); }
         |   lval '=' expr ';'   { $$ = new cAssignNode($1, $3); }
-        |   lval '=' func_call ';'   {}
-        |   func_call ';'       {}
+        |   lval '=' func_call ';'   { $$ = new cAssignNode($1, $3); }
+        |   func_call ';'       { $$ = $1; }
         |   block               { $$=$1; }
         |   RETURN expr ';'     { $$ = new cReturnNode($2); }
         |   error ';'           {}
 
-func_call:  IDENTIFIER '(' params ')' {}
-        |   IDENTIFIER '(' ')'  {}
+func_call:  IDENTIFIER '(' params ')' { $$ = new cFuncExprNode($1, $3); }
+        |   IDENTIFIER '(' ')'  { $$ = new cFuncExprNode($1); }
 
-varref:   varref '.' varpart    {}
-        | varref '[' expr ']'   {}
-        | varpart               {  }
+varref:   varref '.' varpart    { $$=$1; $$->Insert($3); }
+        | varref '[' expr ']'   { $$=$1; $$->Insert($3); }
+        | varpart               { $$ = new cVarExprNode($1); }
 
-varpart:  IDENTIFIER            { $$ = $1; }
+varpart:  IDENTIFIER            { $$ = g_SymbolTable.Find($1); }
 
-lval:     varref                { $$ = new cVarExprNode($1); }
+lval:     varref                { $$=$1; }
 
-params:     params',' param     {}
-        |   param               {}
+params:     params',' param     { $$ = $1; $$->Insert($3); }
+        |   param               { $$ = new cParamListNode($1); }
 
-param:      expr                {}
+param:      expr                { $$ = $1; }
 
-expr:       expr EQUALS addit   {}
+expr:       expr EQUALS addit   { $$ = new cExprNode(); 
+								  $$->Insert($1);
+								  $$->Insert(new cOpNode(EQUALS));
+								  $$->Insert($3);}
         |   addit               { $$ = $1; }
 
 addit:      addit '+' term      { $$ = new cExprNode(); 
@@ -201,7 +209,7 @@ term:       term '*' fact       { $$ = new cExprNode();
 fact:        '(' expr ')'       { $$=$2; }
         |   INT_VAL             { $$ = new cIntExprNode($1); }
         |   FLOAT_VAL           { $$ = new cFloatExprNode($1); }
-        |   varref              { $$ = new cVarExprNode($1); }
+        |   varref              { $$=$1; }
 
 %%
 
