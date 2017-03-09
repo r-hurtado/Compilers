@@ -1,0 +1,15 @@
+ERROR: syntax error at symbol c on line 3
+ERROR: a previously declared as other than a function on line 28
+ERROR: syntax error at symbol a1 on line 33
+ERROR: Symbol c not defined  on line 5
+ERROR: Symbol c not defined  on line 6
+ERROR: Symbol c not defined  on line 6
+ERROR: Symbol c not defined  on line 7
+ERROR: Symbol c not defined  on line 7
+ERROR: Symbol b not defined  on line 15
+ERROR: Symbol b not defined  on line 18
+ERROR: Symbol b not defined  on line 19
+ERROR: Symbol b not defined  on line 20
+ERROR: Symbol b not defined  on line 21
+ERROR: Symbol b not defined  on line 22
+14 Errors in compile

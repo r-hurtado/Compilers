@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<program>
+  <block size="16">
+    <decls size="13">
+      <var_decl size="4" offset="0">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="4" name="aa" decl="4"/>
+      </var_decl>
+      <var_decl size="4" offset="4">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="5" name="bb" decl="5"/>
+      </var_decl>
+      <func size="8" offset="0">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="6" name="foo" decl="6"/>
+        <decls size="5">
+          <var_decl size="4" offset="0">
+            <sym id="2" name="int" decl="2"/>
+            <sym id="7" name="aa" decl="7"/>
+          </var_decl>
+          <var_decl size="1" offset="4">
+            <sym id="1" name="char" decl="1"/>
+            <sym id="8" name="bb" decl="8"/>
+          </var_decl>
+        </decls>
+        <stmts>
+          <return>
+            <int value="1"/>
+          </return>
+        </stmts>
+      </func>
+      <func size="16" offset="0">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="9" name="bar" decl="9"/>
+        <args size="4">
+          <var_decl size="1" offset="-12">
+            <sym id="1" name="char" decl="1"/>
+            <sym id="10" name="aa" decl="10"/>
+          </var_decl>
+        </args>
+        <decls size="5">
+          <var_decl size="4" offset="0">
+            <sym id="2" name="int" decl="2"/>
+            <sym id="11" name="bb" decl="11"/>
+          </var_decl>
+          <var_decl size="1" offset="4">
+            <sym id="1" name="char" decl="1"/>
+            <sym id="12" name="cc" decl="12"/>
+          </var_decl>
+        </decls>
+        <stmts>
+          <block size="11">
+            <decls size="11">
+              <var_decl size="4" offset="8">
+                <sym id="2" name="int" decl="2"/>
+                <sym id="13" name="aa" decl="13"/>
+              </var_decl>
+              <var_decl size="4" offset="12">
+                <sym id="2" name="int" decl="2"/>
+                <sym id="14" name="bb" decl="14"/>
+              </var_decl>
+            </decls>
+            <stmts>
+              <print>
+                <int value="1"/>
+              </print>
+            </stmts>
+          </block>
+          <return>
+            <int value="2"/>
+          </return>
+        </stmts>
+      </func>
+      <var_decl size="4" offset="8">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="15" name="s1_aa" decl="15"/>
+      </var_decl>
+      <var_decl size="1" offset="12">
+        <sym id="1" name="char" decl="1"/>
+        <sym id="16" name="s1_bb" decl="16"/>
+      </var_decl>
+    </decls>
+    <stmts>
+      <print>
+        <int value="1"/>
+      </print>
+    </stmts>
+  </block>
+</program>

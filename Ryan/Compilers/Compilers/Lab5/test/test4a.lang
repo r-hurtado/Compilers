@@ -1,0 +1,13 @@
+{
+    int foo(int a);
+    float bar(int a);
+
+    int aa;
+    float bb;
+
+    aa = foo(2000);
+    aa = bar(2000);
+
+    bb = foo(2000);
+    bb = bar(2000);
+}

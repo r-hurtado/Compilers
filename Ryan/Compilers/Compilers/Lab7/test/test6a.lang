@@ -1,0 +1,13 @@
+//testing functions
+{
+	int foo(int x)
+	{
+		x = 4;
+		print(x);
+	}
+	int aa;
+	aa = 9;
+	print(aa);
+	foo(aa);
+	print(aa);
+}

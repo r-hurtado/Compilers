@@ -1,0 +1,11 @@
+{
+    int aa;
+    int func(int aa);
+
+    func = 5;
+    aa();
+    func(aa, 2);
+    func(3.5);
+
+    return 0;
+}

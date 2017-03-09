@@ -1,0 +1,18 @@
+//testing function returns
+{
+	int foo(int a)
+	{
+		int x;
+		x = 2;
+		x = x + a;
+		print(x);
+		return x;
+	}
+	int a;
+	int b;
+	
+	a = 3;
+	b = foo(a);
+	print(b);
+
+}

@@ -1,0 +1,19 @@
+{
+    char c;
+    int i;
+    float f;
+
+    int foo(char a, int b, float c)
+    {
+        return b;
+    }
+
+    foo(1, 1000, 1.2);
+    foo(1000, 1000, 1.2);
+    foo(1, 1.2, 1.2);
+    foo(c, i, f);
+    foo(i, i, f);
+    foo(c, f, f);
+    foo(c, c, c);
+    foo(c, i, i);
+}

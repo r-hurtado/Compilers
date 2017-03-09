@@ -1,0 +1,19 @@
+//testing expressions with a combo of vars and nums
+{
+	int a;
+	float aa;
+	
+	a = 5;
+	aa = 1.1;
+	 	
+	print(a + 1);
+	print(a - 1);
+	print(a * 1);
+	print(a / 1);
+	
+	print(aa + 0.1);
+	print(aa - 0.2);
+	print(aa * 0.1);
+	print(aa / 0.1);
+
+}

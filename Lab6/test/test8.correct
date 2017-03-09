@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<program>
+  <block size="16">
+    <decls size="16">
+      <var_decl size="4" offset="0">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="4" name="aa" decl="4"/>
+      </var_decl>
+      <var_decl size="4" offset="4">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="5" name="bb" decl="5"/>
+      </var_decl>
+      <var_decl size="4" offset="8">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="6" name="cc" decl="6"/>
+      </var_decl>
+      <func size="4" offset="0">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="7" name="foo" decl="7"/>
+        <args size="8">
+          <var_decl size="4" offset="-12">
+            <sym id="2" name="int" decl="2"/>
+            <sym id="8" name="bb" decl="8"/>
+          </var_decl>
+          <var_decl size="4" offset="-16">
+            <sym id="2" name="int" decl="2"/>
+            <sym id="9" name="cc" decl="9"/>
+          </var_decl>
+        </args>
+        <decls size="4">
+          <var_decl size="4" offset="0">
+            <sym id="2" name="int" decl="2"/>
+            <sym id="10" name="aa" decl="10"/>
+          </var_decl>
+        </decls>
+        <stmts>
+          <assign>
+            <varref size="4" offset="0">
+              <sym id="10" name="aa" decl="10"/>
+            </varref>
+            <expr>
+              <varref size="4" offset="-12">
+                <sym id="8" name="bb" decl="8"/>
+              </varref>
+              <op value="+"/>
+              <varref size="4" offset="-16">
+                <sym id="9" name="cc" decl="9"/>
+              </varref>
+            </expr>
+          </assign>
+          <print>
+            <varref size="4" offset="0">
+              <sym id="10" name="aa" decl="10"/>
+            </varref>
+          </print>
+          <return>
+            <varref size="4" offset="0">
+              <sym id="10" name="aa" decl="10"/>
+            </varref>
+          </return>
+        </stmts>
+      </func>
+      <var_decl size="4" offset="12">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="11" name="dd" decl="11"/>
+      </var_decl>
+    </decls>
+    <stmts>
+      <assign>
+        <varref size="4" offset="12">
+          <sym id="11" name="dd" decl="11"/>
+        </varref>
+        <expr>
+          <expr>
+            <varref size="4" offset="0">
+              <sym id="4" name="aa" decl="4"/>
+            </varref>
+            <op value="+"/>
+            <varref size="4" offset="4">
+              <sym id="5" name="bb" decl="5"/>
+            </varref>
+          </expr>
+          <op value="+"/>
+          <varref size="4" offset="8">
+            <sym id="6" name="cc" decl="6"/>
+          </varref>
+        </expr>
+      </assign>
+      <assign>
+        <varref size="4" offset="0">
+          <sym id="4" name="aa" decl="4"/>
+        </varref>
+        <funcCall>
+          <sym id="7" name="foo" decl="7"/>
+          <params size="8">
+            <varref size="4" offset="12">
+              <sym id="11" name="dd" decl="11"/>
+            </varref>
+            <varref size="4" offset="8">
+              <sym id="6" name="cc" decl="6"/>
+            </varref>
+          </params>
+        </funcCall>
+      </assign>
+      <print>
+        <varref size="4" offset="0">
+          <sym id="4" name="aa" decl="4"/>
+        </varref>
+      </print>
+    </stmts>
+  </block>
+</program>

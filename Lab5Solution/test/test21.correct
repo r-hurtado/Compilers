@@ -1,0 +1,5 @@
+ERROR: Cannot assign a1 to int on line 20
+ERROR: Cannot assign int to a1 on line 21
+ERROR: Cannot assign a2 to a1 on line 22
+ERROR: Cannot assign a2 to a1 on line 23
+4 Errors in compile

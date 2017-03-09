@@ -1,0 +1,5 @@
+ERROR: foo redeclared with a different number of parameters on line 3
+ERROR: bar previously defined with different parameters on line 6
+ERROR: stuff redeclared with a different number of parameters on line 9
+ERROR: fluff redeclared with a different number of parameters on line 19
+4 Errors in compile

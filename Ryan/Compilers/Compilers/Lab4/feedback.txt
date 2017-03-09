@@ -1,0 +1,14 @@
+Lab 3 Feedback
+
+Some of your comments in cSymbolTable are misleading. For now, IncreaseScope was called because you found a '{'. Starting this week, you will call it for other reasons as well.
+
+-5 Your Find routines should return the symbol, not a bool. The function is "Find", not "Exists".
+
+-10 Your FindOuter repeatedly does a lookup in the inner most scope. It will not find a symbol in an outer scope.
+
+Lab 1 Feedback
+
+-2 You did not edit the comment header to add your name or the date.
+
+Otherwise, Well done.
+

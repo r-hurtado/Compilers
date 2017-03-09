@@ -1,0 +1,93 @@
+<?xml version="1.0"?>
+<program>
+  <block>
+    <decls>
+      <func>
+        <sym id="2" name="int" decl="2"/>
+        <sym id="4" name="foo" decl="4"/>
+        <args>
+          <var_decl>
+            <sym id="2" name="int" decl="2"/>
+            <sym id="5" name="a" decl="5"/>
+          </var_decl>
+        </args>
+      </func>
+      <func>
+        <sym id="2" name="int" decl="2"/>
+        <sym id="4" name="foo" decl="4"/>
+        <args>
+          <var_decl>
+            <sym id="2" name="int" decl="2"/>
+            <sym id="6" name="a" decl="6"/>
+          </var_decl>
+        </args>
+      </func>
+      <func>
+        <sym id="2" name="int" decl="2"/>
+        <sym id="4" name="foo" decl="4"/>
+        <args>
+          <var_decl>
+            <sym id="2" name="int" decl="2"/>
+            <sym id="7" name="a" decl="7"/>
+          </var_decl>
+        </args>
+        <stmts>
+          <return>
+            <varref>
+              <sym id="7" name="a" decl="7"/>
+            </varref>
+          </return>
+        </stmts>
+      </func>
+      <func>
+        <sym id="2" name="int" decl="2"/>
+        <sym id="8" name="bar" decl="8"/>
+        <args>
+          <var_decl>
+            <sym id="2" name="int" decl="2"/>
+            <sym id="9" name="b" decl="9"/>
+          </var_decl>
+        </args>
+      </func>
+      <func>
+        <sym id="2" name="int" decl="2"/>
+        <sym id="8" name="bar" decl="8"/>
+        <args>
+          <var_decl>
+            <sym id="2" name="int" decl="2"/>
+            <sym id="10" name="b" decl="10"/>
+          </var_decl>
+        </args>
+        <stmts>
+          <return>
+            <varref>
+              <sym id="10" name="b" decl="10"/>
+            </varref>
+          </return>
+        </stmts>
+      </func>
+      <func>
+        <sym id="2" name="int" decl="2"/>
+        <sym id="8" name="bar" decl="8"/>
+        <args>
+          <var_decl>
+            <sym id="2" name="int" decl="2"/>
+            <sym id="10" name="b" decl="10"/>
+          </var_decl>
+        </args>
+        <stmts>
+          <return>
+            <varref>
+              <sym id="10" name="b" decl="10"/>
+            </varref>
+          </return>
+        </stmts>
+      </func>
+    </decls>
+    <stmts>
+      <return>
+        <int value="1"/>
+      </return>
+    </stmts>
+  </block>
+</program>

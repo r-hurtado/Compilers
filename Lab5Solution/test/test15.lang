@@ -1,0 +1,14 @@
+{
+    int foo();
+    int foo(int a);
+
+    int bar(int a);
+    int bar();
+
+    int stuff(int a, int b);
+    int stuff(int a, int b, int c);
+
+    int a;
+
+    a = 1;
+}

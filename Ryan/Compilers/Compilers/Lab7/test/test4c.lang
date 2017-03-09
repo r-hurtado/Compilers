@@ -1,0 +1,8 @@
+// test for varibles 
+{
+	int a;
+	a = 1;
+	if (a)
+		print(0);
+	endif;
+}

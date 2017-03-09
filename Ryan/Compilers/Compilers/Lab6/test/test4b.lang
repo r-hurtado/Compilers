@@ -1,0 +1,33 @@
+{
+    struct
+    {
+        char cc;
+        int  dd;
+        float ee;
+    } s1;
+
+    char cc;
+    int dd;
+    float ee;
+    struct s1 hh;
+
+    cc = hh.cc;
+    dd = hh.dd;
+    ee = hh.ee;
+
+    hh.ee = ee;
+    hh.dd = dd;
+    hh.cc = cc;
+
+    dd = hh.ee;
+    cc = hh.ee;
+    cc = hh.dd;
+
+    hh.dd = ee;
+    hh.cc = ee;
+    hh.cc = dd;
+
+
+    cc = 1;
+}
+

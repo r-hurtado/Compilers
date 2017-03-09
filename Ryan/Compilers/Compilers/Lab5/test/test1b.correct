@@ -1,0 +1,5 @@
+ERROR: Symbol bbb not defined on line 8
+ERROR: Symbol bbb not defined on line 11
+ERROR: Symbol aaa not defined on line 13
+ERROR: Symbol bbb not defined on line 14
+4 Errors in compile

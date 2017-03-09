@@ -1,0 +1,7 @@
+Tests
+	1. Prints
+	2. Assignments
+	3. Expressions
+	4. If statements
+	5. While statements
+	6. Functions

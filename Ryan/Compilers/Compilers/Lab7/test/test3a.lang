@@ -1,0 +1,7 @@
+//testing expressions with floats, ints, chars directly
+{
+	print(3.3 * 3.0);
+	print(3 + 1);
+	print(3 - 1);
+	print(4 / 2);
+}

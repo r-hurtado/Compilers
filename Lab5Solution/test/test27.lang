@@ -1,0 +1,10 @@
+{
+    int foo() { return 1; }
+    int bar(int a) { return a; }
+
+    foo();
+    foo(1);
+    bar();
+    bar(1);
+    bar(1,2);
+}

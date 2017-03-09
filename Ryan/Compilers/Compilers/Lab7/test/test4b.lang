@@ -1,0 +1,10 @@
+//test != operators
+{
+  if(4 != 3)
+  	print(3);
+  endif;
+  
+  if(3 != 4)
+  	print(5);
+  endif;
+}

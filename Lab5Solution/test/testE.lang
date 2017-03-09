@@ -1,0 +1,44 @@
+{
+    {
+        chat c;
+
+        c = -128;
+        c = c + 5;
+        c = 5 + c;
+    }
+    {
+        int a;
+        array int[5] a1;
+        a1 arr;
+        int foo(int a)
+        {
+            return b;
+        }
+
+        a = b;
+        b = a;
+        arr[b] = 5;
+        a = arr[b];
+        foo(b);
+    }
+    {
+        int a;
+        array int[5] a1;
+
+        int a() { return 0; }
+
+        a = 3;
+        {
+            int a() { return 1; }
+            int a1() { return 1; } // scanner returns TYPE_ID, so can't fix
+            a = 4;
+        }
+    }
+
+    {
+        b();
+
+        return b();
+    }
+}
+

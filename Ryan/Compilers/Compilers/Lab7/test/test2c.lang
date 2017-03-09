@@ -1,0 +1,12 @@
+// assigning chars
+{
+	char a;
+	char b;
+	
+	a = 6;
+	b = a;
+	
+	print(a);
+	print(b);
+
+}

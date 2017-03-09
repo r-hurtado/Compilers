@@ -1,0 +1,16 @@
+{
+    int a;
+    int b;
+    array int[5] a1;
+
+    int a() { return 0; }
+
+    a = 3;
+    {
+        int a() 
+        { 
+            return 1; 
+        }
+        b = 4;
+    }
+}

@@ -1,0 +1,34 @@
+ERROR: Symbol aaa already defined in current scope on line 189
+ERROR: aa previously declared as other than a function on line 299
+ERROR: foo previously declared with different return type on line 302
+ERROR: fluff already has a definition on line 315
+ERROR: foo previously declared with a different number of parameters on line 321
+ERROR: bar previously declared with different parameters on line 324
+ERROR: stuff previously declared with a different number of parameters on line 327
+ERROR: fluff previously declared with a different number of parameters on line 337
+ERROR: Symbol bbb not defined  on line 191
+ERROR: Symbol bbb not defined  on line 200
+ERROR: Symbol bbb not defined  on line 203
+ERROR: Symbol aaa not defined  on line 205
+ERROR: Symbol bbb not defined  on line 206
+ERROR: Cannot assign int to char on line 223
+ERROR: Cannot assign int to char on line 224
+ERROR: Cannot assign int to char on line 225
+ERROR: Cannot assign float to char on line 226
+ERROR: Cannot assign float to int on line 227
+ERROR: Cannot assign int to char on line 251
+ERROR: Cannot assign float to int on line 252
+ERROR: Cannot assign int to char on line 254
+ERROR: Cannot assign float to char on line 255
+ERROR: Cannot assign float to int on line 256
+ERROR: Cannot assign float to int on line 257
+ERROR: foo is not fully defined on line 267
+ERROR: bar is not fully defined on line 268
+ERROR: foo is not fully defined on line 270
+ERROR: bar is not fully defined on line 271
+ERROR: aa is not a function on line 346
+ERROR: func is not fully defined on line 347
+ERROR: func called with wrong number of arguments on line 347
+ERROR: func is not fully defined on line 348
+ERROR: func called with incompatible argument on line 348
+33 Errors in compile

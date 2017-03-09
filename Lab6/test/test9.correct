@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<program>
+  <block>
+    <decls>
+      <func size="4" offset="0">
+        <sym id="2" name="int" decl="2"/>
+        <sym id="4" name="foo" decl="4"/>
+        <args size="12">
+          <var_decl size="1" offset="-12">
+            <sym id="1" name="char" decl="1"/>
+            <sym id="5" name="aa" decl="5"/>
+          </var_decl>
+          <var_decl size="1" offset="-16">
+            <sym id="1" name="char" decl="1"/>
+            <sym id="6" name="bb" decl="6"/>
+          </var_decl>
+          <var_decl size="1" offset="-20">
+            <sym id="1" name="char" decl="1"/>
+            <sym id="7" name="cc" decl="7"/>
+          </var_decl>
+        </args>
+        <decls size="4">
+          <var_decl size="4" offset="0">
+            <sym id="2" name="int" decl="2"/>
+            <sym id="8" name="dd" decl="8"/>
+          </var_decl>
+        </decls>
+        <stmts>
+          <return>
+            <varref size="1" offset="-12">
+              <sym id="5" name="aa" decl="5"/>
+            </varref>
+          </return>
+        </stmts>
+      </func>
+    </decls>
+    <stmts>
+      <print>
+        <int value="1"/>
+      </print>
+    </stmts>
+  </block>
+</program>

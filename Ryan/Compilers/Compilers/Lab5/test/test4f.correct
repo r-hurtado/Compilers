@@ -1,0 +1,5 @@
+ERROR: func is not an lval on line 5
+ERROR: aa is not a function on line 6
+ERROR: func called with wrong number of arguments on line 7
+ERROR: func called with incompatible argument on line 8
+4 Errors in compile

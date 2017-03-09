@@ -1,0 +1,19 @@
+//testing if and else in whiles
+{
+	int a;
+	int i;
+	a = 0;
+	i = 0;
+	
+	while(i != 3)
+	{
+		if(a == 1)
+			print(7);
+		else
+			print(i);
+			a = i;
+		endif;
+		
+		i = i + 1;
+	}
+}

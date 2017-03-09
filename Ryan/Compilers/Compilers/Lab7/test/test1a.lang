@@ -1,0 +1,5 @@
+// Testing printing char will print 0 because null
+{
+    char a;
+    print(a);
+}

@@ -1,0 +1,14 @@
+//testing if else with vars
+{
+	int a;
+	int b;
+	a = 1;
+	b = 1;
+	
+	if(b != a)
+		print(3);
+	else
+		print(5);
+	endif;
+	
+}

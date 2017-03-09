@@ -1,0 +1,10 @@
+{
+    array int[5] a1;
+    int foo(int a, float b);
+    int foo(float a, float b);
+    int bar(a1 x);
+    int bar(a1 y);
+    int bar(int y);
+
+    return 1;
+}

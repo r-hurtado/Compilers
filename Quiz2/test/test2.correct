@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<program>
+  <other>
+    <saab1>
+      <sym id="1" name="this"/>
+      <sym id="2" name="that"/>
+    </saab1>
+    <gloops>
+      <other>
+        <saab2>
+          <sym id="3" name="other"/>
+          <sym id="4" name="stuff"/>
+          <int value="5"/>
+        </saab2>
+        <gloops>
+          <car>
+            <fact>
+              <int value="3"/>
+            </fact>
+            <expr>
+              <fact>
+                <int value="5"/>
+              </fact>
+              <op value="+"/>
+              <fact>
+                <int value="7"/>
+              </fact>
+            </expr>
+          </car>
+          <car>
+            <fact>
+              <expr>
+                <expr>
+                  <fact>
+                    <int value="3"/>
+                  </fact>
+                  <op value="+"/>
+                  <fact>
+                    <int value="4"/>
+                  </fact>
+                </expr>
+                <op value="-"/>
+                <expr>
+                  <expr>
+                    <fact>
+                      <int value="5"/>
+                    </fact>
+                    <op value="*"/>
+                    <fact>
+                      <int value="6"/>
+                    </fact>
+                  </expr>
+                  <op value="/"/>
+                  <fact>
+                    <int value="7"/>
+                  </fact>
+                </expr>
+              </expr>
+            </fact>
+            <expr>
+              <fact>
+                <int value="20"/>
+              </fact>
+              <op value="%"/>
+              <fact>
+                <int value="3"/>
+              </fact>
+            </expr>
+          </car>
+        </gloops>
+      </other>
+      <plane>
+        <saab1>
+          <sym id="5" name="even"/>
+          <sym id="6" name="more"/>
+        </saab1>
+      </plane>
+      <boat>
+        <int value="15"/>
+      </boat>
+      <plane>
+        <saab2>
+          <sym id="7" name="more"/>
+          <sym id="8" name="stuff"/>
+          <int value="8"/>
+        </saab2>
+      </plane>
+    </gloops>
+  </other>
+</program>

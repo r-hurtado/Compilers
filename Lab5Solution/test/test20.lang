@@ -1,0 +1,15 @@
+{
+    int a;
+    array int[5] a1;
+    a1 arr;
+    int foo(int a)
+    {
+        return b;
+    }
+
+    a = b;
+    b = a;
+    arr[b] = 1;
+    a = arr[b];
+    foo(b);
+}

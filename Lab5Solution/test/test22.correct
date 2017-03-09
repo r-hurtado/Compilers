@@ -1,0 +1,6 @@
+ERROR: a[] is not an array on line 8
+ERROR: v0[] is not an array on line 16
+ERROR: v0[] is not an array on line 17
+ERROR: v3[][][][] is not an array on line 18
+ERROR: v2[][][] is not an array on line 19
+5 Errors in compile

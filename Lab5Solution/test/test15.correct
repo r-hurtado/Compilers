@@ -1,0 +1,4 @@
+ERROR: foo previously declared with a different number of parameters on line 3
+ERROR: bar previously declared with a different number of parameters on line 6
+ERROR: stuff previously declared with a different number of parameters on line 9
+3 Errors in compile

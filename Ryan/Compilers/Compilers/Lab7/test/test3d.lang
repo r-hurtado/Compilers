@@ -1,0 +1,16 @@
+//testing a expressions in assignments
+{
+	int a;
+	float aa;
+	
+	a = 5;
+	aa = 1.1;
+	
+	a = a * 1;
+	aa = aa * 0.1;
+	
+	print(a);
+	print(aa);
+
+
+}

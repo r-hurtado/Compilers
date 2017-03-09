@@ -1,0 +1,27 @@
+{
+    int aa;
+    int bb;
+    int foo()
+    {
+        int aa;
+        char bb;
+
+        return 1;
+    }
+    int bar(char aa)
+    {
+        int bb;
+        char cc;
+        {
+            int aa;
+            int bb;
+            print(1);
+        }
+
+        return 2;
+    }
+    int s1_aa;
+    char s1_bb;
+
+    print(1);
+}

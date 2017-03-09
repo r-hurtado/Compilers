@@ -1,0 +1,3 @@
+ERROR: foo previously declared with different parameters on line 4
+ERROR: bar previously declared with different parameters on line 7
+2 Errors in compile
