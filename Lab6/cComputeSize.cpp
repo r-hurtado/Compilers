@@ -117,8 +117,8 @@ void cComputeSize::Visit(cFuncDeclNode * start)
 	
 	VisitAllChildren(start);
 	
-	start->setSize(start->GetParams()->Sizeof());
-	//start->setSize(m_highwater + Align(m_highwater));
+	//start->setSize(start->GetParams()->Sizeof());
+	start->setSize(m_highwater + Align(m_highwater));
 	
 	m_offset = temp_o;
 	m_highwater = temp_h;

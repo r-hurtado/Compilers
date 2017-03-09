@@ -187,10 +187,7 @@ class cFuncDeclNode : public cDeclNode
         virtual void Visit(cVisitor *visitor) { visitor->Visit(this); }
 
         // Return the size of the var
-        virtual int Sizeof() { 
-			int typeSize = GetType()->Sizeof();
-			int paramSize = GetParams()->Sizeof();
-		return typeSize - paramSize; }
+        virtual int Sizeof() { return 0; }
 		
     protected:
         bool    m_isDefinition;     // flag indicating this is a definition,
